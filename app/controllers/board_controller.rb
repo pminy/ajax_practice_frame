@@ -23,4 +23,12 @@ class BoardController < ApplicationController
 
   def destroy
   end
+  
+  def reply_create
+    reply = Reply.new
+    reply.content = params[:content]
+    reply.post_id = params[:id_of_post]
+    reply.save
+    redirect_to '/board/index' 
+  end
 end
